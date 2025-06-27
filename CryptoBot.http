@@ -1,0 +1,6 @@
+@CryptoBot_HostAddress = http://localhost:5244
+
+GET {{CryptoBot_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
