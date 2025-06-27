@@ -55,6 +55,22 @@ namespace CryptoBot.Controllers.V1
             });
         }
 
+        // POST: desencriptar texto sin guardar en DB
+        [HttpPost("desencriptar")]
+        public IActionResult Desencriptar([FromBody] PalabraRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var resultado = _service.Desencriptar(request.Texto, request.Desplazamiento);
+            return Ok(new
+            {
+                textoOriginal = request.Texto,
+                desplazamiento = request.Desplazamiento,
+                resultado
+            });
+        }
+
         [HttpPut("{id:int:min(1)}")] // solo ID numérico positivo
         public IActionResult Put(int id, [FromBody] PalabraRequest request)
         {

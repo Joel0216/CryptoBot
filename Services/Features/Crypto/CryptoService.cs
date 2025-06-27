@@ -72,5 +72,10 @@ namespace CryptoBot.Services.Features.Crypto
                 return (char)((((c - baseChar + desplazamiento + 26) % 26) + baseChar));
             }).ToArray());
         }
+
+        public string Desencriptar(string texto, int desplazamiento)
+        {
+            return Cesar(texto, desplazamiento, cifrar: false);
+        }
     }
 }

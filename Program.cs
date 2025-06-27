@@ -72,29 +72,35 @@ var app = builder.Build();
 // 5. Mostrar Swagger en entorno desarrollo
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "CryptoBot API V1");
-        options.RoutePrefix = string.Empty;
-    });
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "CryptoBot API V1");
+    c.RoutePrefix = "swagger";
+});
+
 }
 
-// 🛡️ 6. Middleware personalizado: Bloquear todas las IP excepto la autorizada
+// Middleware personalizado para bloquear todas las IP excepto 187.155.101.200
 app.Use(async (context, next) =>
 {
-    var ipPermitida = "187.155.101.200";
+    var ipPermitidas = new[] { "187.155.101.200", "::1", "127.0.0.1" };
+
     var ipCliente = context.Connection.RemoteIpAddress?.ToString();
 
-    if (ipCliente != ipPermitida)
+    // Evita bloqueo si estás en entorno de desarrollo
+    var env = app.Environment;
+    if (env.IsDevelopment() || ipPermitidas.Contains(ipCliente))
+    {
+        await next();
+    }
+    else
     {
         context.Response.StatusCode = StatusCodes.Status403Forbidden;
         await context.Response.WriteAsync("Acceso denegado: esta API solo está disponible desde una IP autorizada.");
-        return;
     }
-
-    await next.Invoke();
 });
+
 
 // 7. Seguridad
 app.UseHttpsRedirection();

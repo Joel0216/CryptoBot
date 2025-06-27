@@ -168,3 +168,9 @@ C:\Users\denic\CryptoBot\obj\Debug\net9.0\CryptoBot.pdb
 C:\Users\denic\CryptoBot\obj\Debug\net9.0\CryptoBot.genruntimeconfig.cache
 C:\Users\denic\CryptoBot\obj\Debug\net9.0\ref\CryptoBot.dll
 C:\Users\denic\CryptoBot\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\denic\CryptoBot\bin\Debug\net9.0\PublicacionSomee\web.config
+C:\Users\denic\CryptoBot\bin\Debug\net9.0\PublicacionSomee\appsettings.Development.json
+C:\Users\denic\CryptoBot\bin\Debug\net9.0\PublicacionSomee\appsettings.json
+C:\Users\denic\CryptoBot\bin\Debug\net9.0\PublicacionSomee\CryptoBot.deps.json
+C:\Users\denic\CryptoBot\bin\Debug\net9.0\PublicacionSomee\CryptoBot.runtimeconfig.json
+C:\Users\denic\CryptoBot\bin\Debug\net9.0\PublicacionSomee\CryptoBot.staticwebassets.endpoints.json
